@@ -1,4 +1,4 @@
-# homebrew-tap
+# cboone/tap
 
 Homebrew tap for `cboone` projects.
 
