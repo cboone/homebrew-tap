@@ -25,8 +25,8 @@ class Bopca < Formula
 
       Configuration file locations:
         Project: .bopca.yaml or .bopca.yml
-        User:    $XDG_CONFIG_HOME/bopca/bopca.yaml or bopca.yml
-                 (default: ~/.config/bopca/bopca.yaml or bopca.yml)
+        User:    $XDG_CONFIG_HOME/bopca/bopca.yaml or $XDG_CONFIG_HOME/bopca/bopca.yml
+                 (default: ~/.config/bopca/bopca.yaml or ~/.config/bopca/bopca.yml)
 
       Example config: #{share}/bopca/config/bopca.example.yaml
     EOS
