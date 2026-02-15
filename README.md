@@ -12,7 +12,7 @@ brew tap cboone/tap
 
 - `bopca` - stable release formula
 - `right-round` - HEAD formula (builds from `main`)
-- `jm` - HEAD formula (builds from `main`)
+- `fm` - HEAD formula (builds from `main`)
 - `gh-problemas` - HEAD formula (builds from `main`)
 
 ## Install
@@ -20,7 +20,7 @@ brew tap cboone/tap
 ```bash
 brew install bopca
 brew install right-round
-brew install jm
+brew install fm
 brew install gh-problemas
 ```
 
