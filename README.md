@@ -10,22 +10,23 @@ brew tap cboone/tap
 
 ## Formulae
 
-- `bopca` - stable release formula
-- `right-round` - HEAD formula (builds from `main`)
-- `fm` - HEAD formula (builds from `main`)
-- `gh-problemas` - HEAD formula (builds from `main`)
+| Formula                                                  | Description                                        |
+| -------------------------------------------------------- | -------------------------------------------------- |
+| [`bopca`](https://github.com/cboone/bopca)               | Run LLM agents in lightweight macOS VMs            |
+| [`fm`](https://github.com/cboone/fm)                     | Safe, read-oriented CLI for Fastmail via JMAP      |
+| [`gh-problemas`](https://github.com/cboone/gh-problemas) | TUI for GitHub issue management (gh CLI extension) |
+| [`right-round`](https://github.com/cboone/right-round)   | Browse and preview terminal progress indicators    |
 
 ## Install
 
 ```bash
-brew install bopca
-brew install right-round
-brew install fm
-brew install gh-problemas
+brew install cboone/tap/bopca
+brew install cboone/tap/fm
+brew install cboone/tap/gh-problemas
+brew install cboone/tap/right-round
 ```
 
 ## Notes
 
-- HEAD formulas are temporary until tagged release automation is wired for each source repo.
-- `gh-problemas` builds from the public repository head.
-- Repo-level follow-up work is tracked in `docs/source-repo-checklist.md`.
+- `bopca` installs a pre-built binary from the latest release.
+- `fm`, `gh-problemas`, and `right-round` are HEAD-only formulas that build from source.

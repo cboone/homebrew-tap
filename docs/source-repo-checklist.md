@@ -13,18 +13,21 @@ This checklist tracks the follow-up work required in source repos to move from t
 - [ ] Cut first SemVer tag and release (for example `v0.1.0`).
 - [ ] Ensure release workflow publishes tarballs and checksums.
 - [x] Add a GoReleaser `brews` block targeting `cboone/homebrew-tap`.
-- [ ] Replace HEAD-only formula with stable URL + `sha256` formula updates via automation.
+- [ ] Set `HOMEBREW_TAP_TOKEN` as an Actions secret so GoReleaser can push formula updates.
+- [ ] Replace HEAD-only formula with stable release formula once first tag is published.
 
 ## fm
 
-- [ ] Add release workflow (tags `v*`) that publishes release assets and checksums.
-- [ ] Add GoReleaser config and `brews` block targeting `cboone/homebrew-tap`.
+- [x] Add release workflow (tags `v*`) that publishes release assets and checksums.
+- [x] Add GoReleaser config and `brews` block targeting `cboone/homebrew-tap`.
 - [ ] Decide and document version strategy (`--version` output contract).
-- [ ] Replace HEAD-only formula with stable release formula once first tag is published.
+- [ ] Set `HOMEBREW_TAP_TOKEN` as an Actions secret so GoReleaser can push formula updates.
+- [ ] Replace HEAD-only formula with stable release formula once the tap token is configured.
 
 ## gh-problemas
 
-- [ ] Add release workflow (tags `v*`) that publishes release assets and checksums.
+- [x] Add release workflow (tags `v*`) that publishes release assets and checksums.
 - [x] Add GoReleaser config and `brews` block targeting `cboone/homebrew-tap`.
 - [x] Migrate module path from `github.com/hpg/gh-problemas` to `github.com/cboone/gh-problemas`.
-- [ ] Replace HEAD-only formula with stable release formula once first tag is published.
+- [ ] Set `HOMEBREW_TAP_TOKEN` as an Actions secret so GoReleaser can push formula updates.
+- [ ] Replace HEAD-only formula with stable release formula once the tap token is configured.
