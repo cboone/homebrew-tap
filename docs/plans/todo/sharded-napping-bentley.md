@@ -14,7 +14,7 @@ truth and auto-regenerate README sections on every formula change.
 
 Three new/modified files:
 
-1. **`scripts/update-readme.sh`** -- shell script that parses `Formula/*.rb`
+1. **`bin/update-readme`** -- shell script that parses `Formula/*.rb`
    and regenerates marked sections of the README
 2. **`.github/workflows/update-readme.yml`** -- GitHub Actions workflow
    triggered by formula changes on `main`
@@ -25,7 +25,7 @@ Three new/modified files:
 | File | Action |
 | --- | --- |
 | `README.md` | Add `<!-- BEGIN:section -->` / `<!-- END:section -->` markers |
-| `scripts/update-readme.sh` | New: formula parser and README generator |
+| `bin/update-readme` | New: formula parser and README generator |
 | `.github/workflows/update-readme.yml` | New: CI workflow |
 
 ## README Marker Structure
@@ -37,7 +37,7 @@ preserved exactly.
 - `<!-- BEGIN:install-commands -->` / `<!-- END:install-commands -->`
 - `<!-- BEGIN:notes -->` / `<!-- END:notes -->`
 
-## Script Logic (`scripts/update-readme.sh`)
+## Script Logic (`bin/update-readme`)
 
 ### Parsing (per `Formula/*.rb`, sorted alphabetically)
 
@@ -70,8 +70,8 @@ block.
 
 ### Modes
 
-- `scripts/update-readme.sh` -- update README in place
-- `scripts/update-readme.sh --check` -- exit 1 if README would change (no
+- `bin/update-readme` -- update README in place
+- `bin/update-readme --check` -- exit 1 if README would change (no
   writes); useful for CI validation
 
 ### Edge Cases
@@ -112,18 +112,18 @@ GoReleaser config should be updated instead.
 ## Implementation Steps
 
 1. Add HTML comment markers to `README.md` around the three dynamic sections
-2. Create `scripts/update-readme.sh` (make executable)
-3. Test locally: `bash scripts/update-readme.sh --check` should show expected
-   diff from description corrections, then `bash scripts/update-readme.sh`
+2. Create `bin/update-readme` (make executable)
+3. Test locally: `bash bin/update-readme --check` should show expected
+   diff from description corrections, then `bash bin/update-readme`
    should produce the updated file
 4. Create `.github/workflows/update-readme.yml`
 5. Commit all changes on the feature branch, open PR
 
 ## Verification
 
-1. Run `bash scripts/update-readme.sh --check` locally and confirm exit code 1
+1. Run `bash bin/update-readme --check` locally and confirm exit code 1
    (due to description corrections from current README)
-2. Run `bash scripts/update-readme.sh` and inspect the updated README
+2. Run `bash bin/update-readme` and inspect the updated README
 3. Manually edit a formula's `desc`, run script again, confirm README updates
 4. Revert the test edit
 5. After merging, the next GoReleaser push will trigger the workflow
