@@ -31,3 +31,9 @@ This checklist tracks the follow-up work required in source repos to move from t
 - [x] Migrate module path from `github.com/hpg/gh-problemas` to `github.com/cboone/gh-problemas`.
 - [ ] Set `HOMEBREW_TAP_TOKEN` as an Actions secret so GoReleaser can push formula updates.
 - [ ] Replace HEAD-only formula with stable release formula once the tap token is configured.
+
+## pbcopy2
+
+- [ ] Add GoReleaser config and `brews` block targeting `cboone/homebrew-tap`.
+- [ ] Set `HOMEBREW_TAP_TOKEN` as an Actions secret so GoReleaser can push formula updates.
+- [ ] After first GoReleaser-managed release, verify the auto-generated formula replaces the manual one correctly.
