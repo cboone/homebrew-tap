@@ -3,7 +3,7 @@ cask "snappy" do
   name "snappy"
   desc "Automatically increase your Time Machine snapshot frequency (macOS only)"
   homepage "https://github.com/cboone/snappy"
-  version "0.6.0"
+  version "0.7.0"
 
   livecheck do
     skip "Auto-generated on release."
@@ -15,18 +15,30 @@ cask "snappy" do
     on_intel do
       url "https://github.com/cboone/snappy/releases/download/v#{version}/snappy_#{version}_darwin_amd64.tar.gz",
         verified: "github.com/cboone/snappy"
-      sha256 "c708aa8e16d96d4cbe213e4095180eb5a53c04178ffb0459fed16c6d73571a8d"
+      sha256 "89eb82fba164a6fa58704825556db12cbe419e1e1d91df44915a76e7f6bf46f2"
     end
     on_arm do
       url "https://github.com/cboone/snappy/releases/download/v#{version}/snappy_#{version}_darwin_arm64.tar.gz",
         verified: "github.com/cboone/snappy"
-      sha256 "e8cdd72c1777a8a6ef5e1bd138838e5a2c142019b0cde5ad2c1706c5c65c786a"
+      sha256 "1cedd7abe646b57ce229c49406c03236cb80d19052094c608f8ba4bb323c47be"
     end
   end
 
   postflight do
     xattr -dr com.apple.quarantine "#{staged_path}/snappy"
   end
+
+  caveats do
+    "To run snappy automatically in the background:"
+    "  snappy service install"
+    ""
+    "To stop the background service:"
+    "  snappy service uninstall"
+  end
+
+  uninstall launchctl: [
+      "com.cboone.snappy",
+    ]
 
   # No zap stanza required
 end
