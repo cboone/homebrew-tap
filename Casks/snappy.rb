@@ -3,7 +3,7 @@ cask "snappy" do
   name "snappy"
   desc "Automatically increase your Time Machine snapshot frequency (macOS only)"
   homepage "https://github.com/cboone/snappy"
-  version "0.8.2"
+  version "0.8.3"
 
   livecheck do
     skip "Auto-generated on release."
@@ -15,12 +15,12 @@ cask "snappy" do
     on_intel do
       url "https://github.com/cboone/snappy/releases/download/v#{version}/snappy_#{version}_darwin_amd64.tar.gz",
         verified: "github.com/cboone/snappy"
-      sha256 "cedd8c038249b74a6c57a081b0558b5b91667ae32896cdd81004a3e5617f045b"
+      sha256 "680405b455b73347658e39b36f19fabb2ff084c38545df278ea916c65dcc0550"
     end
     on_arm do
       url "https://github.com/cboone/snappy/releases/download/v#{version}/snappy_#{version}_darwin_arm64.tar.gz",
         verified: "github.com/cboone/snappy"
-      sha256 "12a6ec5bd21a98b1fa9fc942816d899ca317c3864d4219682e24f3214749def0"
+      sha256 "6526c278492f187c6c37f428ea5f48c6f5df5034284d9c86b6dfb311cdb8990f"
     end
   end
 
@@ -29,11 +29,7 @@ cask "snappy" do
   end
 
   caveats do
-    "To run snappy automatically in the background:"
-    "  snappy service install"
-    ""
-    "To stop the background service:"
-    "  snappy service uninstall"
+    "To run snappy automatically in the background:\n  snappy service install\n\nTo stop the background service:\n  snappy service uninstall"
   end
 
   uninstall launchctl: [
