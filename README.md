@@ -45,3 +45,27 @@ brew install cboone/tap/right-round
 - `right-round` is a HEAD-only formula that builds from source.
 
 <!-- END:notes -->
+
+## Casks
+
+<!-- BEGIN:casks-table -->
+
+| Cask                                         | Description                                                              |
+| -------------------------------------------- | ------------------------------------------------------------------------ |
+| [`snappy`](https://github.com/cboone/snappy) | Automatically increase your Time Machine snapshot frequency (macOS only) |
+
+<!-- END:casks-table -->
+
+<!-- BEGIN:cask-install-commands -->
+
+```bash
+brew install --cask cboone/tap/snappy
+```
+
+<!-- END:cask-install-commands -->
+
+<!-- BEGIN:cask-notes -->
+
+- `snappy` installs a pre-built binary from a GoReleaser-managed release.
+
+<!-- END:cask-notes -->
