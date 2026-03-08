@@ -12,14 +12,13 @@ brew tap cboone/tap
 
 <!-- BEGIN:formulae-table -->
 
-| Formula                                                  | Description                                                              |
-| -------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [`bopca`](https://github.com/cboone/bopca)               | Run LLM agents in lightweight macOS VMs                                  |
-| [`fm`](https://github.com/cboone/fm)                     | Safe, read-oriented CLI for Fastmail email via JMAP                      |
-| [`gh-problemas`](https://github.com/cboone/gh-problemas) | TUI for GitHub issue management                                          |
-| [`pbcopy2`](https://github.com/cboone/pbcopy2)           | Modern pbcopy and pbpaste: concealment, auto-clear, type selection       |
-| [`right-round`](https://github.com/cboone/right-round)   | Browse and preview terminal progress indicators                          |
-| [`snappy`](https://github.com/cboone/snappy)             | Automatically increase your Time Machine snapshot frequency (macOS only) |
+| Formula                                                  | Description                                                        |
+| -------------------------------------------------------- | ------------------------------------------------------------------ |
+| [`bopca`](https://github.com/cboone/bopca)               | Run LLM agents in lightweight macOS VMs                            |
+| [`fm`](https://github.com/cboone/fm)                     | Safe, read-oriented CLI for Fastmail email via JMAP                |
+| [`gh-problemas`](https://github.com/cboone/gh-problemas) | TUI for GitHub issue management                                    |
+| [`pbcopy2`](https://github.com/cboone/pbcopy2)           | Modern pbcopy and pbpaste: concealment, auto-clear, type selection |
+| [`right-round`](https://github.com/cboone/right-round)   | Browse and preview terminal progress indicators                    |
 
 <!-- END:formulae-table -->
 
@@ -33,7 +32,6 @@ brew install cboone/tap/fm
 brew install cboone/tap/gh-problemas
 brew install cboone/tap/pbcopy2
 brew install cboone/tap/right-round
-brew install cboone/tap/snappy
 ```
 
 <!-- END:install-commands -->
@@ -43,7 +41,7 @@ brew install cboone/tap/snappy
 <!-- BEGIN:notes -->
 
 - `bopca` and `pbcopy2` install pre-built binaries from the latest releases.
-- `fm`, `gh-problemas`, and `snappy` install pre-built binaries from GoReleaser-managed releases.
+- `fm` and `gh-problemas` install pre-built binaries from GoReleaser-managed releases.
 - `right-round` is a HEAD-only formula that builds from source.
 
 <!-- END:notes -->
