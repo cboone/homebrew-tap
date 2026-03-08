@@ -3,29 +3,36 @@ cask "snappy-tm" do
   name "snappy-tm"
   desc "Automatically increase your Time Machine snapshot frequency (macOS only)"
   homepage "https://github.com/cboone/snappy"
-  version "0.8.3"
+  version "0.9.0"
 
   livecheck do
     skip "Auto-generated on release."
   end
 
   binary "snappy"
+  manpage "share/man/man1/snappy.1"
 
   on_macos do
     on_intel do
       url "https://github.com/cboone/snappy/releases/download/v#{version}/snappy_#{version}_darwin_amd64.tar.gz",
         verified: "github.com/cboone/snappy"
-      sha256 "680405b455b73347658e39b36f19fabb2ff084c38545df278ea916c65dcc0550"
+      sha256 "5589df765f59daf0552aebe9fb4599275c6f4b1bf269c9a855adbf1b8acaaecb"
     end
     on_arm do
       url "https://github.com/cboone/snappy/releases/download/v#{version}/snappy_#{version}_darwin_arm64.tar.gz",
         verified: "github.com/cboone/snappy"
-      sha256 "6526c278492f187c6c37f428ea5f48c6f5df5034284d9c86b6dfb311cdb8990f"
+      sha256 "3e9de42adf237d287fe2382a2a5e9a6986c6d86c3c1af24d5a9fa52ffbb9fa73"
     end
   end
 
   postflight do
     system_command "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "#{staged_path}/snappy"]
+    system_command "/bin/mkdir", args: ["-p", "#{HOMEBREW_PREFIX}/etc/bash_completion.d"]
+    system_command "/bin/cp", args: ["#{staged_path}/completions/snappy.bash", "#{HOMEBREW_PREFIX}/etc/bash_completion.d/snappy"]
+    system_command "/bin/mkdir", args: ["-p", "#{HOMEBREW_PREFIX}/share/zsh/site-functions"]
+    system_command "/bin/cp", args: ["#{staged_path}/completions/_snappy", "#{HOMEBREW_PREFIX}/share/zsh/site-functions/_snappy"]
+    system_command "/bin/mkdir", args: ["-p", "#{HOMEBREW_PREFIX}/share/fish/vendor_completions.d"]
+    system_command "/bin/cp", args: ["#{staged_path}/completions/snappy.fish", "#{HOMEBREW_PREFIX}/share/fish/vendor_completions.d/snappy.fish"]
   end
 
   caveats do
