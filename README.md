@@ -50,22 +50,22 @@ brew install cboone/tap/right-round
 
 <!-- BEGIN:casks-table -->
 
-| Cask                                         | Description                                                              |
-| -------------------------------------------- | ------------------------------------------------------------------------ |
-| [`snappy`](https://github.com/cboone/snappy) | Automatically increase your Time Machine snapshot frequency (macOS only) |
+| Cask                                            | Description                                                              |
+| ----------------------------------------------- | ------------------------------------------------------------------------ |
+| [`snappy-tm`](https://github.com/cboone/snappy) | Automatically increase your Time Machine snapshot frequency (macOS only) |
 
 <!-- END:casks-table -->
 
 <!-- BEGIN:cask-install-commands -->
 
 ```bash
-brew install --cask cboone/tap/snappy
+brew install --cask cboone/tap/snappy-tm
 ```
 
 <!-- END:cask-install-commands -->
 
 <!-- BEGIN:cask-notes -->
 
-- `snappy` installs a pre-built binary from a GoReleaser-managed release.
+- `snappy-tm` installs a pre-built binary from a GoReleaser-managed release.
 
 <!-- END:cask-notes -->
