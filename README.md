@@ -40,8 +40,8 @@ brew install cboone/tap/right-round
 
 <!-- BEGIN:notes -->
 
-- `bopca` and `pbcopy2` install pre-built binaries from the latest releases.
-- `fm` and `gh-problemas` install pre-built binaries from GoReleaser-managed releases.
+- `pbcopy2` installs a pre-built binary from the latest release.
+- `bopca`, `fm`, and `gh-problemas` install pre-built binaries from GoReleaser-managed releases.
 - `right-round` is a HEAD-only formula that builds from source.
 
 <!-- END:notes -->
