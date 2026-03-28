@@ -18,24 +18,13 @@ Remove the old formula file that is frozen at v0.2.0 and will no longer receive 
 
 - **File:** `Formula/fm.rb`
 
-### 3. Add migration entry to `tap_migrations.json`
+### 3. ~~Add migration entry to `tap_migrations.json`~~ (INCORRECT)
 
-Add `"fm": "cask/fm"` so that existing users who installed via the formula are automatically redirected to the cask on their next `brew upgrade`.
-
-- **File:** `tap_migrations.json`
-- **Current content:**
-  ```json
-  {
-    "snappy": "cask/snappy-tm"
-  }
-  ```
-- **New content:**
-  ```json
-  {
-    "fm": "cask/fm",
-    "snappy": "cask/snappy-tm"
-  }
-  ```
+> **This step was wrong.** `tap_migrations.json` is only for formulae that moved
+> to a **different tap** (e.g., `"foo": "homebrew/core"`). The value `"cask/fm"`
+> caused Homebrew to try tapping `cask/homebrew-fm`, a nonexistent repository.
+> There is no Homebrew mechanism for automatic formula-to-cask redirects within
+> the same tap. This entry was removed on 2026-03-28.
 
 ### 4. Regenerate `README.md`
 

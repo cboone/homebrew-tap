@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+# bin/validate-tap-migrations - Validate tap_migrations.json entries
+# Author: Christopher Boone
+# Date: 2026-03-28
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly SCRIPT_DIR
+REPO_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
+readonly REPO_DIR
+readonly MIGRATIONS_FILE="${REPO_DIR}/tap_migrations.json"
+
+readonly E_SUCCESS=0
+readonly E_INVALID_JSON=1
+readonly E_INVALID_ENTRY=2
+
+# Validate that tap_migrations.json is well-formed JSON.
+# Returns:
+#   0 on success, 1 if invalid
+function validate_json() {
+  if ! python3 -m json.tool "${MIGRATIONS_FILE}" >/dev/null 2>&1; then
+    echo "error: ${MIGRATIONS_FILE} is not valid JSON" >&2
+    return "${E_INVALID_JSON}"
+  fi
+}
+
+# Validate that all values are proper Homebrew tap names.
+#
+# tap_migrations.json maps old formula names to the tap they moved to.
+# Values must be in "owner/repo" format (e.g., "homebrew/core").
+#
+# Common mistake: using "cask/name" to redirect a formula to a cask.
+# This does NOT work. Homebrew interprets the value as a tap name and
+# tries to clone "https://github.com/cask/homebrew-name", which fails.
+# There is no Homebrew mechanism for automatic formula-to-cask redirects.
+#
+# Returns:
+#   0 if all entries are valid, 2 if any are invalid
+function validate_entries() {
+  local -i errors=0
+
+  # Extract key-value pairs from the JSON object
+  local pairs
+  pairs="$(python3 -c "
+import json, sys
+with open(sys.argv[1]) as f:
+    data = json.load(f)
+for key, value in data.items():
+    print(f'{key}\t{value}')
+" "${MIGRATIONS_FILE}")"
+
+  if [[ -z "${pairs}" ]]; then
+    return "${E_SUCCESS}"
+  fi
+
+  while IFS=$'\t' read -r key value; do
+    # Value must contain exactly one slash
+    local slash_count
+    slash_count="${value//[^\/]/}"
+    if [[ "${#slash_count}" -ne 1 ]]; then
+      echo "error: \"${key}\": \"${value}\" is not a valid tap name (must be \"owner/repo\")" >&2
+      ((errors++))
+      continue
+    fi
+
+    # Split into owner and repo
+    local owner="${value%%/*}"
+    local repo="${value##*/}"
+
+    # Neither part can be empty
+    if [[ -z "${owner}" ]] || [[ -z "${repo}" ]]; then
+      echo "error: \"${key}\": \"${value}\" has an empty owner or repo component" >&2
+      ((errors++))
+      continue
+    fi
+
+    # Reject "cask/..." values, the most common mistake
+    if [[ "${owner}" == "cask" ]]; then
+      echo "error: \"${key}\": \"${value}\" uses \"cask/\" as a tap owner" >&2
+      echo "  tap_migrations.json is for tap-to-tap moves, not formula-to-cask redirects." >&2
+      echo "  There is no Homebrew mechanism for automatic formula-to-cask redirects." >&2
+      echo "  Remove this entry and document the migration in the README instead." >&2
+      ((errors++))
+      continue
+    fi
+  done <<<"${pairs}"
+
+  if ((errors > 0)); then
+    return "${E_INVALID_ENTRY}"
+  fi
+}
+
+function main() {
+  if [[ ! -f "${MIGRATIONS_FILE}" ]]; then
+    echo "info: ${MIGRATIONS_FILE} does not exist, nothing to validate" >&2
+    exit "${E_SUCCESS}"
+  fi
+
+  validate_json
+  validate_entries
+
+  echo "tap_migrations.json is valid." >&2
+}
+
+main "${@}"
