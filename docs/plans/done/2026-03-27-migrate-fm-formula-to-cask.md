@@ -10,7 +10,7 @@ This follows the same pattern used for the `snappy` to `snappy-tm` migration alr
 
 ### 1. Verify the cask works
 
-Run `brew install cboone/tap/fm` to confirm the cask installs correctly. This is a manual verification step before proceeding with destructive changes.
+Run `brew install --cask cboone/tap/fm` to confirm the cask installs correctly. This is a manual verification step before proceeding with destructive changes.
 
 ### 2. Delete `Formula/fm.rb`
 
@@ -54,7 +54,7 @@ chore: migrate fm from formula to cask (#14)
 
 ## Verification
 
-1. Run `brew install cboone/tap/fm` and confirm it installs v0.3.0
+1. Run `brew install --cask cboone/tap/fm` and confirm it installs v0.3.0
 2. Run `bin/update-readme --check` after the README update to confirm it is in sync
 3. Verify `tap_migrations.json` is valid JSON
 4. Verify `Formula/fm.rb` no longer exists
