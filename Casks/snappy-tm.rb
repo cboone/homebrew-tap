@@ -3,7 +3,7 @@ cask "snappy-tm" do
   name "snappy-tm"
   desc "Automatically increase your Time Machine snapshot frequency (macOS only)"
   homepage "https://github.com/cboone/snappy"
-  version "0.10.0"
+  version "0.11.1"
 
   livecheck do
     skip "Auto-generated on release."
@@ -16,12 +16,12 @@ cask "snappy-tm" do
     on_intel do
       url "https://github.com/cboone/snappy/releases/download/v#{version}/snappy_#{version}_darwin_amd64.tar.gz",
         verified: "github.com/cboone/snappy"
-      sha256 "8c74062d4a7cc49c8b645a12b5cfc86a21cb064f002f35916a7a0d90442c2626"
+      sha256 "5d8ab4bbeccd5640291e9e232d753e237cac59a2b879d3b520d3ddfb80728723"
     end
     on_arm do
       url "https://github.com/cboone/snappy/releases/download/v#{version}/snappy_#{version}_darwin_arm64.tar.gz",
         verified: "github.com/cboone/snappy"
-      sha256 "5108871798cce1d8409d85695c03b3223df041cb88842a29633b89e4de12705f"
+      sha256 "5371e7e6aeafd34921c6af9c244b5492807881df45338bd4ddc1ea3061b57616"
     end
   end
 
