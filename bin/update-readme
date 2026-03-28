@@ -150,7 +150,7 @@ function join_names() {
     for ((i = 0; i < count - 1; i++)); do
       printf '`%s`, ' "${names[i]}"
     done
-    printf 'and `%s`' "${names[count - 1]}"
+    printf 'and `%s`' "${names[count-1]}"
   fi
 }
 
