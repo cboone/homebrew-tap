@@ -15,7 +15,6 @@ brew tap cboone/tap
 | Formula                                                  | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------------ |
 | [`bopca`](https://github.com/cboone/bopca)               | Run LLM agents in lightweight macOS VMs                            |
-| [`fm`](https://github.com/cboone/fm)                     | Safe, read-oriented CLI for Fastmail email via JMAP                |
 | [`gh-problemas`](https://github.com/cboone/gh-problemas) | TUI for GitHub issue management                                    |
 | [`pbcopy2`](https://github.com/cboone/pbcopy2)           | Modern pbcopy and pbpaste: concealment, auto-clear, type selection |
 | [`right-round`](https://github.com/cboone/right-round)   | Browse and preview terminal progress indicators                    |
@@ -28,7 +27,6 @@ brew tap cboone/tap
 
 ```bash
 brew install cboone/tap/bopca
-brew install cboone/tap/fm
 brew install cboone/tap/gh-problemas
 brew install cboone/tap/pbcopy2
 brew install cboone/tap/right-round
@@ -41,7 +39,7 @@ brew install cboone/tap/right-round
 <!-- BEGIN:notes -->
 
 - `pbcopy2` installs a pre-built binary from the latest release.
-- `bopca`, `fm`, and `gh-problemas` install pre-built binaries from GoReleaser-managed releases.
+- `bopca` and `gh-problemas` install pre-built binaries from GoReleaser-managed releases.
 - `right-round` is a HEAD-only formula that builds from source.
 
 <!-- END:notes -->
@@ -52,6 +50,7 @@ brew install cboone/tap/right-round
 
 | Cask                                            | Description                                                              |
 | ----------------------------------------------- | ------------------------------------------------------------------------ |
+| [`fm`](https://github.com/cboone/fm)            | Safe, read-oriented CLI for Fastmail email via JMAP                      |
 | [`snappy-tm`](https://github.com/cboone/snappy) | Automatically increase your Time Machine snapshot frequency (macOS only) |
 
 <!-- END:casks-table -->
@@ -59,6 +58,7 @@ brew install cboone/tap/right-round
 <!-- BEGIN:cask-install-commands -->
 
 ```bash
+brew install --cask cboone/tap/fm
 brew install --cask cboone/tap/snappy-tm
 ```
 
@@ -66,6 +66,6 @@ brew install --cask cboone/tap/snappy-tm
 
 <!-- BEGIN:cask-notes -->
 
-- `snappy-tm` installs a pre-built binary from a GoReleaser-managed release.
+- `fm` and `snappy-tm` install pre-built binaries from GoReleaser-managed releases.
 
 <!-- END:cask-notes -->
