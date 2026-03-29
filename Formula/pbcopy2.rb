@@ -17,11 +17,8 @@ class Pbcopy2 < Formula
   end
 
   def install
-    arch = Hardware::CPU.arm? ? "arm64" : "amd64"
-    cd "pbcopy2-#{version}-darwin-#{arch}" do
-      bin.install "pbcopy2"
-      bin.install "pbpaste2"
-    end
+    bin.install "pbcopy2"
+    bin.install "pbpaste2"
   end
 
   test do
